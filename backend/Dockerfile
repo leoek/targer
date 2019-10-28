@@ -1,16 +1,18 @@
 # Use an official Python runtime as a parent image
 FROM python:3.5
 
-# Add all Data
-ADD . /
-
 # Set the working directory to /
 WORKDIR /
 
+COPY ./requirements.txt .
+RUN pip --no-cache-dir  install torch==0.4.1
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
-RUN git clone https://github.com/UKPLab/emnlp2017-bilstm-cnn-crf.git
+# Add all Data
+ADD . /
+
+RUN git clone https://github.com/UKPLab/emnlp2017-bilstm-cnn-crf.git && cd emnlp2017-bilstm-cnn-crf/ && git checkout 2.1.5 && cd ..
 
 RUN mv backend.py emnlp2017-bilstm-cnn-crf/ && mv Model.py emnlp2017-bilstm-cnn-crf/ && mv ModelNewES.py emnlp2017-bilstm-cnn-crf/ && mv ModelNewWD.py emnlp2017-bilstm-cnn-crf/
 
