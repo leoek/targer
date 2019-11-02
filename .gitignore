@@ -106,4 +106,6 @@ backend/models/WD.h5
 backend/models/WD_dep.h5
 backend/models/COMBO.h5
 backend/models/IBM.h5
+backend/models/model_new_es.hdf5
+backend/models/model_new_wd.hdf5
 
